@@ -15,4 +15,13 @@ describe('fetchBreedDesc', () => {
       done();
     });
   });
+
+  it('returns an error and null desc.', (done) => {
+    fetchBreedDesc('Blorgenhime', (err, desc) => {
+      assert.ifError(err);
+      assert.equal(desc, null);
+
+      done();
+    });
+  });
 });

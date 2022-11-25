@@ -1,15 +1,15 @@
 const request = require('request');
 
 const fetchBreedDesc = (breed, callback) => {
-  request(`https://api.thechatapi.com/v1/breeds/search?q=${breed}`,
+  request(`https://api.thecatapi.com/v1/breeds/search?q=${breed}`,
     (err, response, body) => {
       if (err) {
-        return callback(`${err.message}`);
+        return callback(err, null);
       }
       const data = JSON.parse(body)[0];
 
       if (!data) {
-        return callback('Unable to find information on the requested breed.');
+        return callback(err, null);
       }
     
       return callback(null, data.description);
